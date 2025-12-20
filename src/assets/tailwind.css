@@ -1,0 +1,204 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@layer utilities {
+    .bg-primary {
+        @apply bg-orange-500;
+    }
+    .bg-primary-dark {
+        @apply bg-orange-600;
+    }
+    .text-primary {
+        @apply text-orange-500;
+    }
+}
+
+html.ltr {
+    input[type="tel"] {
+        direction: ltr !important;
+    }
+    body , p , div , span , h1 , h2 , h3 , h4 , h5 , h6 , label  , li , td , th {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+    .pr-10 {
+        padding-right: auto !important;
+        padding-left: 2.5rem !important;
+    }
+    .right-0 {
+        right: auto !important;
+        left: 10px !important;
+    }
+    /* .search .right-0 {
+        right: 10px !important;
+        left: auto !important;
+    } */
+     .pr-12 {
+    padding-right: auto;
+    padding-left: 3rem;
+}
+    .left-0 {
+        left: auto !important;
+        right: 10px !important;
+    }
+    .mr-4{
+        margin-right: auto !important;
+        margin-left: 1rem !important;
+    }
+}
+
+
+
+.to-red-500 {
+    --tw-gradient-to: #444 var(--tw-gradient-to-position);
+}
+
+.from-orange-500 {
+    --tw-gradient-from: #555 var(--tw-gradient-from-position);
+}
+
+.text-red-600 {
+    color: #666 !important;
+}
+
+.to-yellow-50 {
+    --tw-gradient-to: rgb(249 250 251 / var(--tw-bg-opacity, 1)) var(--tw-gradient-to-position);
+}
+
+.text-primary {
+    --tw-text-opacity: 1;
+    color: rgb(102 102 102);
+}
+
+.hover\:to-red-600:hover {
+    --tw-gradient-to: #212121 var(--tw-gradient-to-position) !important;
+}
+
+.hover\:from-orange-600:hover {
+    --tw-gradient-from: #020202 var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgb(234 88 12 / 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+.bg-primary {
+    --tw-bg-opacity: 1;
+    background-color: #333;
+}
+
+.text-orange-600 {
+    color: #333 !important;
+}
+
+.hover\:bg-primary-dark:hover {
+    --tw-bg-opacity: 1;
+    background-color: #333 !important;
+}
+
+.min-h-screen.bg-gradient-to-br.to-red-50 {
+    background-color: rgb(249 250 251 / var(--tw-bg-opacity, 1)) !important;
+}
+
+.to-red-50 {
+    --tw-gradient-to: none !important;
+}
+
+.to-red-600 {
+    --tw-gradient-to: #333 var(--tw-gradient-to-position);
+}
+
+.from-orange-600 {
+    --tw-gradient-from: #444 var(--tw-gradient-from-position);
+}
+
+body {
+    background-color: #F1F3F4 !important;
+}
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+
+/*  */
+
+@media print {
+  body * {
+    visibility: hidden; /* اخفي كل حاجة */
+  }
+  #invoiceSection, #invoiceSection * {
+    visibility: visible; /* خلي الفاتورة بس تظهر */
+  }
+  #invoiceSection {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%; /* تخليها تاخد عرض الصفحة */
+  }
+}
+
+
+@media (max-width: 640px) {
+    .text-2xl{font-size: 18px !important;}
+    .text-4xl{font-size: 22px !important;}
+    .text-lg{font-size: 14px !important;}
+    .text-xl{font-size: 18px !important;}
+  .responsive-text {
+    font-size: 14px; /* حجم الخط للأجهزة الصغيرة */
+  }
+  .object-contain.w-full.h-full.transition-all{object-fit: cover !important;}
+  .text-3xl{font-size: 20px !important;}
+}
+
+
+h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+
+button , a {
+    font-family: IBM Plex Sans Arabic, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.3;
+}
+h1 {
+    margin: 0 !important;
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    line-height: 1.2 !important;
+}
