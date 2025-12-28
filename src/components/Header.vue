@@ -3,11 +3,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between py-4">
         <div class="flex items-center gap-3">
-          <img
+          <router-link to="/">
+            <img
             :src="homeData?.logo"
             alt="زلمة - دليل المتاجر المحلية"
             class="h-16 lg:h-20 w-auto object-contain cursor-pointer"
           />
+          </router-link>
         </div>
         <nav class="hidden lg:flex items-center gap-1">
           <router-link
@@ -19,7 +21,7 @@
                 : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
             ]"
           >
-            {{ $t('home') }}
+            {{ $t("home") }}
           </router-link>
 
           <router-link
@@ -31,7 +33,7 @@
                 : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
             ]"
           >
-            {{ $t('categories_head') }}
+            {{ $t("categories_head") }}
           </router-link>
 
           <router-link
@@ -43,7 +45,7 @@
                 : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
             ]"
           >
-            {{ $t('stores') }}
+            {{ $t("stores") }}
           </router-link>
 
           <router-link
@@ -55,7 +57,7 @@
                 : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
             ]"
           >
-            {{ $t('pricing') }}
+            {{ $t("pricing") }}
           </router-link>
 
           <router-link
@@ -67,7 +69,7 @@
                 : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
             ]"
           >
-            {{ $t('about_us') }}
+            {{ $t("about_us") }}
           </router-link>
 
           <router-link
@@ -79,7 +81,7 @@
                 : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
             ]"
           >
-            {{ $t('contact_us') }}
+            {{ $t("contact_us") }}
           </router-link>
         </nav>
 
@@ -89,12 +91,11 @@
             title="English"
             @click="toggleLanguage"
           >
-            {{ currentLanguage === 'ar' ? 'English' : 'العربية' }}
+            {{ currentLanguage === "ar" ? "English" : "العربية" }}
           </button>
         </div>
 
-
-        <div class="flex items-center gap-3 lg:hidden">
+        <div @click="showMenu = !showMenu" class="flex items-center gap-3 lg:hidden">
           <button
             class="hidden px-3 py-2 text-gray-700 hover:text-[#E94B35] hover:bg-red-50 rounded-xl transition-all text-sm"
             title="English"
@@ -122,7 +123,95 @@
             </svg>
           </button>
         </div>
+
+        
       </div>
+
+      <div v-show="showMenu" class="lg:hidden pb-4 border-t pt-4">
+          <nav class="flex flex-col gap-2">
+
+            <router-link
+            to="/"
+            :class="[
+              'px-5 py-2.5 rounded-xl transition-all',
+              route.path === '/'
+                ? 'text-white bg-[#E94B35]'
+                : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
+            ]"
+          >
+            {{ $t("home") }}
+          </router-link>
+
+          <router-link
+            to="/categories"
+            :class="[
+              'px-5 py-2.5 rounded-xl transition-all',
+              route.path.startsWith('/categories')
+                ? 'text-white bg-[#E94B35]'
+                : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
+            ]"
+          >
+            {{ $t("categories_head") }}
+          </router-link>
+
+          <router-link
+            to="/stores"
+            :class="[
+              'px-5 py-2.5 rounded-xl transition-all',
+              route.path.startsWith('/stores')
+                ? 'text-white bg-[#E94B35]'
+                : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
+            ]"
+          >
+            {{ $t("stores") }}
+          </router-link>
+
+          <router-link
+            to="/pricing"
+            :class="[
+              'px-5 py-2.5 rounded-xl transition-all',
+              route.path.startsWith('/pricing')
+                ? 'text-white bg-[#E94B35]'
+                : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
+            ]"
+          >
+            {{ $t("pricing") }}
+          </router-link>
+
+          <router-link
+            to="/about"
+            :class="[
+              'px-5 py-2.5 rounded-xl transition-all',
+              route.path.startsWith('/about')
+                ? 'text-white bg-[#E94B35]'
+                : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
+            ]"
+          >
+            {{ $t("about_us") }}
+          </router-link>
+
+          <router-link
+            to="/contact"
+            :class="[
+              'px-5 py-2.5 rounded-xl transition-all',
+              route.path.startsWith('/contact')
+                ? 'text-white bg-[#E94B35]'
+                : 'text-gray-700 hover:text-[#E94B35] hover:bg-red-50',
+            ]"
+          >
+            {{ $t("contact_us") }}
+          </router-link>
+
+           <button
+            class="px-4 py-2.5 text-gray-700 hover:text-[#E94B35] hover:bg-red-50 rounded-xl transition-all"
+            title="English"
+            @click="toggleLanguage"
+          >
+            {{ currentLanguage === "ar" ? "English" : "العربية" }}
+          </button>
+          </nav>
+        </div>
+
     </div>
   </header>
 </template>
@@ -134,7 +223,11 @@ import { useI18n } from "vue-i18n";
 import { setLanguage } from "../i18n";
 import api from "@/api/http"; // ← استدعاء ملف الـ axios
 
-const props = defineProps({ cartCount: { type: Number, default: 0 } , homeData: { type: Object, default: () => ({}) }});
+const props = defineProps({
+  cartCount: { type: Number, default: 0 },
+  homeData: { type: Object, default: () => ({}) },
+});
+const showMenu = ref(false);
 const open = ref(false);
 const router = useRouter();
 import { useRoute } from "vue-router";
@@ -216,6 +309,16 @@ async function logout() {
     console.error("Logout failed:", error);
   }
 }
+
+// اقفل المينيو أول ما الصفحة تتغير
+watch(
+  () => route.fullPath,
+  () => {
+    showMenu.value = false;
+  }
+);
+
+
 </script>
 
 

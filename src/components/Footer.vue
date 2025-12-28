@@ -4,7 +4,7 @@
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
         <div>
           <img
-            :src="homeData?.logo"
+            src="@/assets/Zalameh.png"
             alt="زلمة - دليل المتاجر المحلية"
             class="h-14 w-auto object-contain mb-4 mix-blend-screen"
           />
@@ -254,7 +254,7 @@
         </div>
       </div>
       <div class="pt-8 border-t border-gray-800 text-center">
-        <p class="text-gray-400 text-sm">© 2025 زلمة. جميع الحقوق محفوظة.</p>
+        <p class="text-center text-gray-400 text-sm">{{ $t('copy') }}</p>
       </div>
     </div>
   </footer>

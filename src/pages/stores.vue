@@ -66,7 +66,7 @@
           ]"
         >
           <span class="text-3xl">🏪</span>
-          <span class="text-sm">الكل</span>
+          <span class="text-sm">{{ $t("all") }}</span>
         </button>
 
         <button
@@ -166,6 +166,27 @@
               <circle cx="12" cy="10" r="3"></circle>
             </svg>
           </a>
+          <router-link
+              :to="`/store/${store?.id}/${store?.full_name.replace(/\s+/g, '-').toLowerCase()}`"
+              class="btn-primary w-full px-6 py-3 bg-[#E94B35] text-white rounded-xl hover:bg-[#d43d2a] transition-all flex items-center justify-center gap-2 group mt-3"
+            >
+              <span>{{ $t('details') }}</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide lucide-chevron-left w-5 h-5 group-hover:-translate-x-1 transition-transform"
+                aria-hidden="true"
+              >
+                <path d="m15 18-6-6 6-6"></path>
+              </svg>
+            </router-link>
         </div>
       </div>
     </div>

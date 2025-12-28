@@ -45,7 +45,22 @@ html.ltr {
         margin-right: auto !important;
         margin-left: 1rem !important;
     }
-}
+    .text-center , .max-w-7xl h1 , h1.text-4xl , .text-center h2 , .text-center h3 , .justify-center h3 , .justify-center p {
+        text-align: center !important;
+    }
+    .text-right{
+        text-align: left !important;
+    }
+    input {
+        direction: ltr !important;
+    }
+    label svg {
+        margin-right: 0.5rem;
+    }
+    .btn-primary.w-full svg{
+        transform: rotate(180deg) !important;
+    }
+ }
 
 
 

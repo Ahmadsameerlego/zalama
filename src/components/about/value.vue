@@ -2,10 +2,9 @@
   <section class="py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="text-center mb-12">
-        <h2 class="text-gray-800 mb-4">قيمنا</h2>
+        <h2 class="text-gray-800 mb-4">{{ $t('value') }}</h2>
         <p class="text-xl text-gray-600 w-full text-center">
-          نؤمن بمجموعة من القيم الأساسية التي توجه عملنا وتضمن تقديم أفضل
-          الخدمات
+          {{ $t('value_description') }}
         </p>
       </div>
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -33,9 +32,9 @@
               ></path>
             </svg>
           </div>
-          <h3 class="text-gray-800 mb-3">الثقة</h3>
+          <h3 class="text-gray-800 mb-3">{{ $t('trust') }}</h3>
           <p class="text-gray-600 leading-relaxed">
-            نوفر منصة موثوقة تجمع أفضل المتاجر المحلية المعتمدة
+            {{ $t('trust_description') }}
           </p>
         </div>
         <div
@@ -63,9 +62,9 @@
               <circle cx="9" cy="7" r="4"></circle>
             </svg>
           </div>
-          <h3 class="text-gray-800 mb-3">المجتمع</h3>
+          <h3 class="text-gray-800 mb-3">{{ $t('community') }}</h3>
           <p class="text-gray-600 leading-relaxed">
-            ندعم الاقتصاد المحلي ونساعد في بناء مجتمع تجاري قوي
+            {{ $t('community_description') }}
           </p>
         </div>
         <div
@@ -92,9 +91,9 @@
               ></path>
             </svg>
           </div>
-          <h3 class="text-gray-800 mb-3">السهولة</h3>
+          <h3 class="text-gray-800 mb-3">{{ $t('ease') }}</h3>
           <p class="text-gray-600 leading-relaxed">
-            نسهل عملية البحث والوصول إلى المتاجر المحلية
+            {{ $t('ease_description') }}
           </p>
         </div>
         <div
@@ -122,9 +121,9 @@
               <circle cx="12" cy="8" r="6"></circle>
             </svg>
           </div>
-          <h3 class="text-gray-800 mb-3">الجودة</h3>
+          <h3 class="text-gray-800 mb-3">{{ $t('quality') }}</h3>
           <p class="text-gray-600 leading-relaxed">
-            نضمن جودة عالية في المحتوى والخدمات المقدمة
+            {{ $t('quality_description') }}
           </p>
         </div>
       </div>

@@ -43,7 +43,7 @@
             </svg>
           </div>
           <h3 class="text-gray-800 mb-2">{{ $t('address') }}</h3>
-          <p class="text-gray-600">{{info?.address }}</p>
+          <p class="text-gray-600 text-center">{{info?.address }}</p>
         </div>
         <div
           class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all border border-gray-100 hover:border-[#E94B35]/20 text-center group"
@@ -72,7 +72,7 @@
           <h3 class="text-gray-800 mb-2">{{ $t('phone') }}</h3>
           <a
             :href="`tel:${info?.phone}`"
-            class="text-gray-600 hover:text-[#E94B35] transition-colors"
+            class="text-gray-600 text-center hover:text-[#E94B35] transition-colors"
             >
             {{ info?.phone }}
             </a
@@ -104,7 +104,7 @@
           <h3 class="text-gray-800 mb-2">{{ $t('email') }}</h3>
           <a
             :href="`mailto:${info?.email}`"
-            class="text-gray-600 hover:text-[#E94B35] transition-colors"
+            class="text-gray-600 text-center hover:text-[#E94B35] transition-colors"
             >{{ info?.email }}</a
           >
         </div>
@@ -132,7 +132,7 @@
             </svg>
           </div>
           <h3 class="text-gray-800 mb-2">{{ $t('work_time') }}</h3>
-          <p class="text-gray-600">{{ info?.work_time }}</p>
+          <p class="text-gray-600 text-center">{{ info?.work_time }}</p>
         </div>
       </div>
     </div>
