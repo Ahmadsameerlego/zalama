@@ -21,7 +21,7 @@
           <div class="mb-12">
             <div class="flex items-start gap-4 mb-4">
               <div class="bg-[#E94B35]/10 p-2 rounded-2xl">
-                <img :src="about?.message?.image" class="w-12 h-12 object-cover" alt="">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-target w-10 h-10 text-[#E94B35]" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
               </div>
               <div>
                 <h2 class="text-gray-800 mb-3 text-right">{{ about?.message?.title }}</h2>
@@ -34,7 +34,7 @@
           <div>
             <div class="flex items-start gap-4">
               <div class="bg-[#E94B35]/10 p-2 rounded-2xl">
-                <img :src="about?.vision?.image" class="w-12 h-12 object-cover" alt="">
+               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-10 h-10 text-[#E94B35]" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
               </div>
               <div>
                 <h2 class="text-gray-800 mb-3 text-right">{{ about?.vision?.title }}</h2>

@@ -1,7 +1,6 @@
 <template>
-  <div class="container mx-auto max-w-7xl px-4 py-16 md:py-24">
-    <div class="text-center mb-16"></div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+  <div class="container mx-auto max-w-7xl px-4 py-16 md:py-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-5">
 
         
       <div

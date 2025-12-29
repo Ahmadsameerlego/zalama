@@ -38,7 +38,7 @@
               />
             </div>
             <div class="flex-1 text-right">
-              <div class="flex items-start justify-between gap-4 mb-3">
+              <div class="flex items-start justify-between gap-4 mb-3 flex-col md:flex-row">
                 <div>
                   <h1 class="text-gray-800 mb-1 p-[0px]">
                     {{ store?.full_name }}
@@ -373,7 +373,7 @@
           <div
             class="mt-8 pt-[16px] border-t border-gray-200 pr-[0px] pb-[0px] pl-[0px]"
           >
-            <div class="flex items-center justify-between gap-4 mb-3">
+            <div class="flex items-center justify-between gap-4 mb-3 flex-col md:flex-row">
               <h3 class="text-gray-800 text-right">{{ $t("about_store") }}</h3>
               <a
                 v-if="store?.url"
@@ -416,7 +416,7 @@
   </div>
 
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="bg-white rounded-2xl shadow-md p-2 mb-8 flex gap-2">
+    <div class="bg-white rounded-2xl shadow-md p-2 mb-8 flex gap-2 overflow-x-auto">
       <button
         v-for="tab in tabs"
         :key="tab.key"
@@ -521,8 +521,9 @@
           <div
             v-for="(image, index) in store?.photos"
             :key="index"
-            class="group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border-2 border-transparent hover:border-[#E94B35]"
-          >
+              @click="openViewer(index)"
+  class="group cursor-pointer rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all border-2 border-transparent hover:border-[#E94B35]"
+            >
             <div
               class="aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 overflow-hidden"
             >
@@ -781,6 +782,53 @@
       </div>
     </div>
   </div>
+
+
+  <!-- Image Viewer -->
+<div
+  v-if="viewerOpen"
+  class="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+>
+  <!-- Close -->
+  <button
+    @click="closeViewer"
+    class="absolute top-6 right-6 text-white text-3xl font-bold"
+  >
+    ✕
+  </button>
+
+  <!-- Prev -->
+  <button
+    @click="prevImage"
+    class="absolute left-6 text-white text-4xl"
+  >
+     ›
+  </button>
+
+  <!-- Image -->
+  <div
+    class="max-w-[90vw] max-h-[90vh] overflow-hidden flex items-center justify-center"
+  >
+    <img
+      :src="store.photos[currentIndex].image"
+      class="transition-transform duration-300 cursor-zoom-in"
+      :style="{ transform: `scale(${zoom})` }"
+      @wheel="handleZoom"
+      @dblclick="toggleZoom"
+    />
+  </div>
+
+  <!-- Next -->
+  <button
+    @click="nextImage"
+    class="absolute right-6 text-white text-4xl"
+  >
+   
+    ‹
+  </button>
+</div>
+
+
 </template>
 
 
@@ -884,4 +932,50 @@ const closeVideo = () => {
   showVideoModal.value = false;
   activeVideo.value = null;
 };
+
+
+
+const viewerOpen = ref(false);
+const currentIndex = ref(0);
+const zoom = ref(1);
+
+const openViewer = (index) => {
+  currentIndex.value = index;
+  zoom.value = 1;
+  viewerOpen.value = true;
+};
+
+const closeViewer = () => {
+  viewerOpen.value = false;
+};
+
+const nextImage = () => {
+  if (currentIndex.value < store?.value?.photos.length - 1) {
+    currentIndex.value++;
+  } else {
+    currentIndex.value = 0;
+  }
+  zoom.value = 1;
+};
+
+const prevImage = () => {
+  if (currentIndex.value > 0) {
+    currentIndex.value--;
+  } else {
+    currentIndex.value = store?.value?.photos.length - 1;
+  }
+  zoom.value = 1;
+};
+
+const handleZoom = (event) => {
+  event.preventDefault();
+  zoom.value += event.deltaY > 0 ? -0.1 : 0.1;
+  zoom.value = Math.min(Math.max(zoom.value, 1), 3);
+};
+
+const toggleZoom = () => {
+  zoom.value = zoom.value === 1 ? 2 : 1;
+};
+
+
 </script>
