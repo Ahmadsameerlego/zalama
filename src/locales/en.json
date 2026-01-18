@@ -84,6 +84,11 @@
   "ease_description": "We simplify the process of searching for and accessing local stores.",
   "quality": "Quality",
   "quality_description": "We ensure high quality in the content and services provided.",
-  "all" : "All"
+  "all" : "All",
+  "no_offers" : "No offers found",
+  "no_photos" : "No photos found",
+  "no_videos" : "No videos found",
+  "no_branches" : "No branches found",
+  "no_jobs" : "No jobs found"
 }
 

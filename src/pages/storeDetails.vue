@@ -99,6 +99,7 @@
                   <div class="flex items-center gap-2">
                     <!-- whats app -->
                     <a
+                      v-if="store?.whatsapp"
                       :href="`https://wa.me/${store?.whatsapp}`"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -125,6 +126,7 @@
 
                     <!-- snapchat  -->
                     <a
+                      v-if="store?.snapchat"
                       :href="store?.snapchat"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -148,6 +150,7 @@
                         >سناب شات</span
                       ></a
                     ><a
+                      v-if="store?.instagram"
                       :href="store?.instagram"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -188,6 +191,7 @@
                         >انستغرام</span
                       ></a
                     ><a
+                      v-if="store?.facebook"
                       :href="store?.facebook"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -271,7 +275,7 @@
                     <p class="text-gray-600 text-sm mb-1 text-right">
                       {{ $t("address") }}
                     </p>
-                    <p class="text-gray-800">{{ store?.address }}</p>
+                    <p class="text-gray-800 text-right">{{ store?.address }}</p>
                   </div>
                 </div>
                 <div
@@ -437,7 +441,7 @@
       class="bg-white rounded-2xl shadow-md p-8"
     >
       <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-if="store?.offers?.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
             v-for="(offer, index) in store?.offers"
             :key="index"
@@ -449,7 +453,7 @@
               <img
                 :src="offer.image"
                 :alt="offer.title"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                class="w-full h-full object- group-hover:scale-110 transition-transform duration-300"
               />
             </div>
             <div class="p-5 space-y-3">
@@ -508,6 +512,9 @@
             </div>
           </div>
         </div>
+        <div v-else class="text-center py-8">
+          <p class="text-gray-600">{{ $t("no_offers") }}</p>
+        </div>
       </div>
     </div>
 
@@ -517,7 +524,7 @@
       class="bg-white rounded-2xl shadow-md p-8"
     >
       <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-if="store?.photos?.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             v-for="(image, index) in store?.photos"
             :key="index"
@@ -530,10 +537,13 @@
               <img
                 :src="image.image"
                 alt="صورة 1"
-                class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                class="w-full h-full object-cotain group-hover:scale-110 transition-transform duration-300"
               />
             </div>
           </div>
+        </div>
+        <div v-else class="text-center py-8">
+          <p class="text-gray-600">{{ $t("no_photos") }}</p>
         </div>
       </div>
     </div>
@@ -544,7 +554,7 @@
       class="bg-white rounded-2xl shadow-md p-8"
     >
       <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-if="store?.videos?.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             v-for="(video, index) in store?.videos"
             :key="index"
@@ -578,6 +588,9 @@
             </div>
           </div>
         </div>
+        <div v-else class="text-center py-8">
+          <p class="text-gray-600">{{ $t("no_videos") }}</p>
+        </div>
       </div>
     </div>
 
@@ -587,7 +600,7 @@
       class="bg-white rounded-2xl shadow-md p-8"
     >
       <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div v-if="store?.branches?.length > 0" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
             v-for="(branch, index) in store?.branches"
             :key="index"
@@ -652,13 +665,16 @@
             </div>
           </div>
         </div>
+        <div v-else class="text-center py-8">
+          <p class="text-gray-600">{{ $t("no_branches") }}</p>
+        </div>
       </div>
     </div>
 
     <!-- jobs  -->
     <div v-if="activeTab==='jobs'" class="bg-white rounded-2xl shadow-md p-8">
       <div>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-if="store?.jobs?.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div
             v-for="(job, index) in store?.jobs"
             :key="index"
@@ -695,6 +711,7 @@
               </p>
               <div class="flex flex-col gap-3 pt-2 border-t border-gray-200">
                 <a
+                  v-if="job?.phone"
                   :href="'tel:' + job.phone"
                   class="flex items-center justify-end gap-2 text-gray-700 hover:text-[#E94B35] transition-all group text-right"
                   dir="ltr"
@@ -720,6 +737,7 @@
                       ></path>
                     </svg></div></a
                 ><a
+                    v-if="job?.email"
                   :href="'mailto:' + job.email"
                   class="flex items-center justify-end gap-2 text-gray-700 hover:text-[#E94B35] transition-all group text-right"
                   dir="ltr"
@@ -751,6 +769,9 @@
           </div>
           
         </div>
+        <div v-else class="text-center py-8">
+          <p class="text-gray-600">{{ $t("no_jobs") }}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -772,13 +793,14 @@
       <!-- Video -->
       <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl bg-black">
         <iframe
-          v-if="activeVideo"
-          :src="activeVideo.url.replace('watch?v=', 'embed/') + '?autoplay=1'"
-          class="w-full h-full"
-          frameborder="0"
-          allow="autoplay; encrypted-media"
-          allowfullscreen
-        ></iframe>
+  v-if="activeVideo?.url"
+  :src="getYoutubeEmbedUrl(activeVideo.url)"
+  class="w-full h-full"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowfullscreen
+></iframe>
+
       </div>
     </div>
   </div>
@@ -807,11 +829,11 @@
 
   <!-- Image -->
   <div
-    class="max-w-[90vw] max-h-[90vh] overflow-hidden flex items-center justify-center"
+    class="max-w-[40vw]  overflow-hidden flex items-center justify-center"
   >
     <img
       :src="store.photos[currentIndex].image"
-      class="transition-transform duration-300 cursor-zoom-in"
+      class="transition-transform duration-300 cursor-zoom-in object-contain"
       :style="{ transform: `scale(${zoom})` }"
       @wheel="handleZoom"
       @dblclick="toggleZoom"
@@ -880,6 +902,7 @@ const initializeCountdowns = () => {
     seconds: "00",
   }));
 };
+
 
 let intervalId = null;
 
@@ -976,6 +999,32 @@ const handleZoom = (event) => {
 const toggleZoom = () => {
   zoom.value = zoom.value === 1 ? 2 : 1;
 };
+
+
+
+function getYoutubeEmbedUrl(url) {
+  if (!url) return "";
+
+  // Shorts
+  const shortsMatch = url.match(/shorts\/([^?]+)/);
+  if (shortsMatch) {
+    return `https://www.youtube.com/embed/${shortsMatch[1]}`;
+  }
+
+  // Watch
+  const watchMatch = url.match(/v=([^&]+)/);
+  if (watchMatch) {
+    return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  }
+
+  // Share youtu.be
+  const shortLinkMatch = url.match(/youtu\.be\/([^?]+)/);
+  if (shortLinkMatch) {
+    return `https://www.youtube.com/embed/${shortLinkMatch[1]}`;
+  }
+
+  return url;
+}
 
 
 </script>

@@ -11,9 +11,9 @@
         <div class="h-full bg-gradient-to-br from-blue-50 to-sky-50 p-8">
           <div class="text-center mb-8">
             <div
-              class="inline-flex items-center justify-center w-16 h-16 bg-blue-100 rounded-2xl mb-4"
+              class="inline-flex items-center justify-center w-16 h-16  rounded-2xl mb-4"
             >
-              <img :src="value?.image" class="w-12 h-12 object-contain" alt="">
+              <img :src="value?.image" class="w-12 h-12 object-cover" alt="">
             </div>
             <h3 class="text-2xl mb-2">{{ value?.title }}</h3>
             <p class="text-sm text-gray-600 mb-6">
@@ -33,10 +33,11 @@
 
             </div>
             <a
-              href="https://wa.me/962791234567?text=مرحباً، أود الاستفسار عن باقة %D8%B2%D9%84%D9%85%D8%A9%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AE%D9%81%D9%8A%D9%81"
+              href="https://wa.me/962797395785?text=مرحباً، أود الاستفسار عن باقة %D8%B2%D9%84%D9%85%D8%A9%20%D8%B9%D9%84%D9%89%20%D8%A7%D9%84%D8%AE%D9%81%D9%8A%D9%81"
               target="_blank"
               rel="noopener noreferrer"
-              class="block w-full py-3 px-6 rounded-xl text-center transition-all duration-300 mt-6 !text-white bg-[#E94B35] border-2 border-gray-200 hover:border-[#E94B35]"
+              class="block w-full py-3 px-6 rounded-xl text-center transition-all duration-300 mt-6 !text-white  border-2 border-gray-200 "
+              :style="`background-color: ${value?.color};`"
               >{{ $t('buy_now') }}</a
             >
           </div>
